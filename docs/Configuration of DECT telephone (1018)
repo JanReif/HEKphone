@@ -1,0 +1,33 @@
+#Configuration of DECT telephone
+
+This is a short configuration instruction for a DECT telephone used as VOIP telephone for hekphone.
+All data refers to the configuration of phone 1018 (Knöppels).
+### Important data for phone 1018:
+pin: 3105
+Authentication password:  ??? 
+
+## Preconfiguration
+
+Logon to https://hekphone/phones and create a new phone. Enter the mac adress (you should find it somewhere on the phone) of the phone and a room number which is not used, e.g. 200, and safe the new created phone.
+Now connect the phone to the network and create a SSH tunnel to access the phone(how to create a ssh tunnel: http://blog.ch-becker.de/2011/03/20/ssh-tunnel-mit-windows-plink-und-putty/ ), using "hekphone.hek.uni-karlsruhe.de" as hostname 3000 as source port, and (in this example) as destination 192.168.2.0:80 (ip of created telephone and :80).
+Now access the phone with your browser (adress should now be "localhost:3000"). The pin should initially be 0000, the current is "3105". Goto Settings->Telephony->Connections and edit one of the not configured connections. Now use the following data:
+
+Connection Name or Number:  hekphone
+Authentication name:        1018
+Authentication password:    ???
+Username:                   1018
+Display Name:               Familie Knoeppel
+
+Click on "show advanced settings" and maintain following data:
+
+Domain:                     192.168.255.254
+Proxy server port:          5060
+Registration server:        192.168.255.254
+Registration server port:   5060
+
+Save all data by choosing "set".
+Please mind that authentication name, authentication password, username and display name is exemplary for 1018 and needs to be adapted to the patricular person/room the telephone is configured for.
+
+## Configuration
+
+Connect the phone to the network in the destionation room and logon to https://hekphone/phones. Delete the new created phone and change the mac adress of the old phone to the mac adress of the just configured phone and use "SIP" as technology.
